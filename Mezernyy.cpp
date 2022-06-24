@@ -1,108 +1,65 @@
-﻿
+/*
+Даны три целых числа: A, B, C. Проверить истинность высказывания: «Ровно одно из чисел A, B, C положительное».
+
+Даны целочисленные координаты точки на плоскости. Если точка совпадает с началом координат, то вывести 0.
+Если точка не совпадает с началом координат, но лежит на оси OX или OY, то вывести соответственно 1 или 2.
+Если точка не лежит на координатных осях, то вывести 3.
+*/
+        
+
 #include <iostream>
 #include <stdio.h>
-#include <Windows.h>
 #include <stdlib.h>
-#include <time.h>
-
+#include <time.h>    
 
 using namespace std;
-
-void print(const short mass[] = {})
-{
-    cout << "{";
-    for (int i = 0; i < 12; ++i)
-    {
-        if (mass[i] != 0) {
-            cout << mass[i];
-            if (i + 1 < 12)
-            {
-                cout << ", ";
-            }
-        }
+void func1(){
+    int a, b, c;
+    cout<<"Enter number 1"<<endl;
+    cin>>a;
+    cout<<"Enter number 2"<<endl;
+    cin>>b;
+    cout<<"Enter number 2"<<endl;
+    cin>>c;
+    if(a>0 and b<=0 and c<=0 or a<=0 and b>0 and c<=0 or a<=0 and b<=0 and c>0){
+        cout<<"Высказывание «Ровно одно из чисел A, B, C положительное» это истина"<<endl;
+    }else{
+        cout<<"Высказывание «Ровно одно из чисел A, B, C положительное» это ложь"<<endl;
     }
-    cout << "}" << endl;
-}
-
-void func1() {
-
-
-    srand(time(NULL));
-    int abc = 0;
-    int cba = 0;
-    const int a = 12;
-    short massi[a] = {};
-    short finalM[a] = {};
-    for (int i = 0; i < 12; i++) {
-        massi[i] = rand();
-
-        if (massi[i] % 2 != 0) {
-            finalM[cba] = massi[i];
-            cba++;
-        }
-        else {
-            finalM[11 - abc] = massi[i];
-            abc++;
-
-        }
-    }
-    print(massi);
-    print(finalM);
-
 }
 
 void func2(){
-    srand(time(NULL));
-    const int a = 12;
-    int abc = 0;
-    int cba = 0;
-    short A[a] = {};
-    short B[a] = {};
-    short C[a] = {};
-    for (int i = 0; i < 12; i++) {
-        A[i] = rand() * rand();
-    
-        if (A[i] >= 0) {
-            B[cba] = A[i];
-            cba++;
-        }
-        else {
-            C[abc] = A[i];
-            abc++;
-
-        }
+    int a, b;
+    cout<<"Enter number 1"<<endl;
+    cin>>a;
+    cout<<"Enter number 2"<<endl;
+    cin>>b;
+    cout<<"Итог: ";
+    if(a==0 and b==0){
+        cout<<0<<endl;
+    }else if(a!=0 and b==0){
+        cout<<1<<endl;
+    }else if(a==0 and b!=0){
+        cout<<2<<endl;
+    }else{
+        cout<<3<<endl;
     }
-    print(A);
-    print(B);
-    print(C);
 }
 
-void func3() {
-    srand(time(NULL));
-    const int a = 12;
-    short A[a] = {};
-    short B[a] = {};
-    for (int i = 0; i < 12; i++) {
-        A[i] = rand() * rand();
+int main(){
+    int z;
+    cout<<"Выберите номер исполняемой программы:\n\
+    1. Даны три целых числа: A, B, C. Проверить истинность высказывания: «Ровно одно из чисел A, B, C положительное».\n\
+    2. Даны целочисленные координаты точки на плоскости. Если точка совпадает с началом координат, то вывести 0.\
+    Если точка не совпадает с началом координат, но лежит на оси OX или OY, то вывести соответственно 1 или 2.\
+    Если точка не лежит на координатных осях, то вывести 3."<<endl;
+    cin>>z;
+    if(z==1){
+        func1();
     }
-    print(A);
-    for (int i = 0; i < 12; i++) {
-        if (i < 11) {
-            B[i + 1] = A[i];
-        }
-        else {
-            B[0] = A[11];
-        }
+    else if(z==2){
+        func2();
+    }else{
+        cout<<"ERROR!";
     }
-    print(B);
 }
-
-int main()
-{
-    func1();
-    cout << endl << endl;
-    func2();
-    cout << endl << endl;
-    func3();
-}
-
